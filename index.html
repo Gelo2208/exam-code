@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shania Yan</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f4c2cd;
+    font-family: 'Caveat', cursive;
+    color: #1a1a1a;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    padding: 20px 0;
+    border-bottom: 3px solid #1a1a1a;
+    position: relative;
+    z-index: 10;
+    flex-shrink: 0;
+  }
+
+  nav a {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+  }
+
+  nav a.active {
+    background-color: #e6b6c2;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    padding: 30px 60px;
+    min-height: 0;
+  }
+
+  .hero h1, .hero .subtitle, .content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .hero .subtitle {
+    font-size: 28px;
+    margin-top: 5px;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .content img {
+    width: 260px;
+    border-radius: 4px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    position: relative;
+    z-index: 1;
+  }
+
+  .quote {
+    flex: 1;
+    min-width: 280px;
+    font-size: 32px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  footer {
+    height: 14px;
+    background-color: #f6a8be;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">Covers</a>
+    <a href="#">Albums</a>
+    <a href="#">Tracklist</a>
+  </nav>
+
+  <div class="hero">
+
+    <h1>shania yan</h1>
+    <p class="subtitle">"music artist/song writer/tiktok star/youtuber</p>
+
+    <div class="content">
+      <img src="shania_yan.jpg" alt="Shania Yan EP 13 cover">
+      <p class="quote">
+        "although not well known in the music industry, she has the voice you can never underestimate &mdash; a voice with a tune so smooth your heart shakes"
+      </p>
+    </div>
+  </div>
+
+  <footer></footer>
+
+</body>
+</html>
