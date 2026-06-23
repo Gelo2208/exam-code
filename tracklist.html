@@ -16,9 +16,10 @@
     <a href="covers.html">Covers</a>
     <a href="albums.html">Albums</a>
     <a href="tracklist.html" class="active">Tracklist</a>
+    <a href="contact.php">Contact Us</a>
 </nav>
 
-<div class="hero">
+<div class="hero tracklist-page">
 
     <img src="shania_bloom.jpg"
          alt="Shania Yan Album">
@@ -32,11 +33,36 @@
             <p class="subtitle">Shania Yan Songs</p>
 
             <ul>
-                <li>Sunshine in the Rain (2024)</li>
-                <li>Cosmos (2024)</li>
-                <li>Where The Wind Takes Me (2025)</li>
-                <li>Delulu (2024)</li>
-                <li>Power of Love (2024)</li>
+                <li>
+                    <span>Sunshine in the Rain (2024)</span>
+                    <button class="play-btn" data-title="Sunshine in the Rain" data-audio="audio/sunshine_in_the_rain.mp3" aria-label="Play Sunshine in the Rain">
+                        <img src="play_button.png" alt="">
+                    </button>
+                </li>
+                <li>
+                    <span>Cosmos (2024)</span>
+                    <button class="play-btn" data-title="Cosmos" data-audio="audio/cosmos.mp3" aria-label="Play Cosmos">
+                        <img src="play_button.png" alt="">
+                    </button>
+                </li>
+                <li>
+                    <span>Where The Wind Takes Me (2025)</span>
+                    <button class="play-btn" data-title="Where The Wind Takes Me" data-audio="audio/where_the_wind_takes_me.mp3" aria-label="Play Where The Wind Takes Me">
+                        <img src="play_button.png" alt="">
+                    </button>
+                </li>
+                <li>
+                    <span>Delulu (2024)</span>
+                    <button class="play-btn" data-title="Delulu" data-audio="audio/delulu.mp3" aria-label="Play Delulu">
+                        <img src="play_button.png" alt="">
+                    </button>
+                </li>
+                <li>
+                    <span>Power of Love (2024)</span>
+                    <button class="play-btn" data-title="Power of Love" data-audio="audio/power_of_love.mp3" aria-label="Play Power of Love">
+                        <img src="play_button.png" alt="">
+                    </button>
+                </li>
             </ul>
 
         </div>
@@ -45,7 +71,310 @@
 
 </div>
 
+<div class="modal-overlay" id="songModal">
+    <div class="modal-box">
+        <button class="close-panel" id="closeModal" aria-label="Close">✕</button>
+        <h3 id="modalTitle">Song Title</h3>
+        <audio id="modalAudio" controls>
+            <source src="" type="audio/mpeg">
+        </audio>
+        <div class="lyrics" id="modalLyrics"></div>
+    </div>
+</div>
+
 <footer></footer>
+
+<script>
+const modal = document.getElementById('songModal');
+const modalAudio = document.getElementById('modalAudio');
+const modalTitle = document.getElementById('modalTitle');
+const modalLyrics = document.getElementById('modalLyrics');
+
+const lyricsData = {
+    "Sunshine in the Rain": `I always wonder what is love, is it burning red or ocean blue?
+I never felt the butterflies like those lovers do until I met you
+You're standing there, I'm holding my breath 'cause I'm terrified to tell you
+That I think I'm in love with you
+
+I like to hear your stumble words
+When you tell me your theories, they call us nerds
+Like, hell, I give a damn what people care
+When all I see was your perfect hair
+
+Can't seem to get enough of that mesmerizing glare
+And I was like, "Huh?" I think I'm in love
+But what is that storm clouds of gra-ay blocking me off from your way?
+Can I get through all your icy haze if you let me stay?
+Is it too late? Is it too late?
+
+I wanna turn back the time and held your hand in mine
+Had I known you were in pain, I'd be your sunshine in the rain
+I will light your darkest days, so trust me, baby, let me stay
+I promise you'll be okay
+'Cause I will be your sunshine in the rain
+
+I never thought you'd be the one
+'Cause back in high school, we're young and dumb
+Why are you so insecure about your life? Can't relate
+'Cause darling, you're gorgeous
+
+Can't seem to forget about your everlasting stare
+And I was like, "Huh?" I think I'm in love
+But what is that storm clouds of gra-ay blocking me off from your way?
+Did you know you broke my heart when you said, "I'll never love again"?
+Is it too late? (It's not too late) Is it too late?
+
+I wanna turn back the time and held your hand in mine
+Had I known you were in pain, I'd be your sunshine in the rain
+I will light your darkest days, so trust me, baby, let me stay
+I promise you'll be okay
+'Cause I will be yours
+
+I wanna turn back the time and held your hand in mine
+Had I known you were in pain, I'd be your sunshine in the rain
+
+If I can turn back the time, then maybe you'll be mine
+Had I known you were in pain, I'll be your sunshine in the rain
+I will chase your fears away, so hold my hand, don't be afraid
+I promise you'll be okay
+So let me be yours forever 'til the end`,
+    "Power of Love": `The whispers in the morning
+Of lovers sleeping tight
+Are rolling by like thunder now
+As I look into your eyes
+I hold on to your body
+And feel each move you make
+Your voice is warm and tender
+A love that I could not forsake
+
+'Cause I am your lady
+And you are my man
+Whenever you reach for me
+I'll do all that I can
+
+We're heading for something
+Somewhere I've never been
+Sometimes I am frightened, but I'm ready to learn
+Of the power of love
+
+The sound of your heart beating
+Made it clear suddenly
+The feeling that I can't go on
+Is light-years away
+
+'Cause I am your lady
+And you are my man
+Whenever you reach for me
+I'm gonna do all that I can
+
+We're heading for something
+Somewhere I've never been
+Sometimes I am frightened, but I'm ready to learn
+Of the power of love`,
+    "Delulu": `だだだだだだいすき
+I know you really love me
+I'm feeling like I'm gonna throw up in
+This make believe
+いいいいかないで
+I want you by my side baby
+I'm going crazy
+愛されたい
+
+Am I in love
+Or I'm in love with my mind
+Don't wake me up
+I rather die in this lie
+Am I insane
+Or I'm a saint in your eye
+So tell me
+What is real?
+
+I fall in love too easily
+But I'll get bored tomorrow soon you'll see
+They say that dreams come true-lu-lu
+When you say I love you
+That's not true
+Oh, I'm delulu
+
+ああ、そうだね
+ねね
+嘘 に 捕まってる
+If you leave me, I'm gonna find you
+Sirens calling do be running
+Crawling in your mama's bed
+When you hear the gunshots go
+Brrr-aah
+In the dead of the night
+I'm so high from my mind
+So tell me
+
+Am I in love
+Or I'm in love with my mind
+Don't wake me up
+I rather die in this lie
+If it's a dream
+Then why do I feel so alive?
+Don't tell me
+What is real?
+
+I fall in love too easily
+But I'll get bored tomorrow soon you'll see
+They say that dreams come true-lu-lu
+When you say I love you
+That's not true
+Wait, no
+I'm always true
+
+痛い痛い
+My brain just died
+From all of delusional lies
+'Cause every touch and every kiss
+It's just a trick of the light
+痛い痛い
+My brain just died
+From all of delusional lies
+Can you be mine? Can you be mine?
+大本意迷ってる グレーが 見えない
+
+I fall in love to easily
+When you pulled out the ring, got on one knees
+You said I love you, marry me?
+And I said, yes, I do
+I will meet you in the wedding room
+I take you to be my love
+To have and hold
+Until death do us part`,
+    "Where The Wind Takes Me": `Sometimes I don't know where to go
+You begged for help, they slam the door
+But don't you worry kid, when life gets hard you miss
+You ask the wind where to blow, sure they know where to go
+
+I'll keep singing 'til the sunrise hits
+Look at me, I'm rising from the pit
+Even though doubt is creeping my way
+Just give up, there's no hope anyway
+Did I make the cut? Life is full of choices
+So let the wind whisper their voices
+So listen, just listen to where the wind will take me
+
+Sometimes you feel life's out of hand (out of hand)
+My castle crumbled into sand (into sand)
+I know it's hard, but kid, you're stronger than you think
+Just ask the wind where to blow, sure they know where to go
+
+I'll keep singing 'til the sunrise hits
+Look at me, I'm rising from the pit
+Even though doubt is creeping my way
+Just give up, there's no hope anyway (hope anyway)
+Did I make the cut? Life is full of choices
+So let the wind whisper their voices
+So listen (so listen), just listen (just listen) to where the wind will take me
+
+Close your eyes, feel the wind brush your skin (ooh)
+I will fight, I won't stop 'til I win
+When the time has come, I hope you'll be there
+So watch me, I won't fade away
+Let the wind take me
+
+(Ooh) I'll keep racing through the open seas
+Look at me, I'm finally breaking free
+Even though live keeps pulling me down
+You can hurt me, but I will not drown (I will not drown)
+Did I make a cut? Life is full of choices
+So let the wind whisper their voices (their voices)
+So listen (I'll listen), just listen (just listen) to the echoes of my heart
+
+Oh, listen (listen)
+Can you listen (listen) to where the wind take me?`,
+    "Cosmos": `One night when all the stars aligned
+A love transcended space and time
+I see you in the stars tonight
+You were shining, but I couldn't make you mine
+I feel I've seen you somewhere, right?
+A thousand light-years out of sight
+
+Through all the constellations, don't tell me it's illusion
+I've finally found you again
+
+May all the stars be on our side
+The day we meet in another life
+Dear God, please grant my wish
+I wanna go where he will go
+Even through the stars
+Even through cosmos
+
+How many light-years lost in time?
+Couldn't reach you even sitting side by side
+I see you in another dream
+Please take me to that brand new scene
+
+Through all the constellations, don't tell me it's illusion
+I finally found you again
+
+May all the stars be on our side
+The day we meet in another life
+Dear God, please grant my wish
+I wanna go where he will go
+Even through the stars
+Even through cosmos
+
+Oh-oh-oh
+Oh-oh-whoa
+Oh-oh-oh-oh-oh
+Oh-oh-oh
+Oh-oh-whoa
+Oh-oh-oh-oh
+
+May all the stars be on our side
+The day we meet in another life
+Dear God, please grant my wish
+I wanna go where he will go
+Even through the stars
+Even through
+
+Let all the cosmos be our guide
+To trace our faith in the starry night
+Dear God, please grant my wish
+I wanna go where he will go
+Even through the scars
+Even through
+Oh, even through the stars
+Even through cosmos`
+};
+
+document.querySelectorAll('.play-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.play-btn.playing').forEach(b => b.classList.remove('playing'));
+        btn.classList.add('playing');
+
+        const title = btn.dataset.title;
+        modalTitle.textContent = title;
+        modalAudio.querySelector('source').src = btn.dataset.audio;
+        modalAudio.load();
+
+        modalLyrics.innerHTML = '';
+        if (lyricsData[title]) {
+            modalLyrics.textContent = lyricsData[title];
+            modalLyrics.style.whiteSpace = 'pre-line';
+        } else {
+            modalLyrics.innerHTML = '<p>Lyrics coming soon.</p>';
+        }
+
+        modal.classList.add('open');
+    });
+});
+
+function closeModal(){
+    modal.classList.remove('open');
+    modalAudio.pause();
+    document.querySelectorAll('.play-btn.playing').forEach(b => b.classList.remove('playing'));
+}
+
+document.getElementById('closeModal').addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+});
+</script>
 
 </body>
 </html>
